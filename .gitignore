@@ -8,4 +8,5 @@ __pycache__/
 .coverage
 htmlcov/
 .pytest_cache/
-*.logclient/node_modules/
+node_modules/
+*.log

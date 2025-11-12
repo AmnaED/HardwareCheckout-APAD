@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  resource-service:
+    build: ./server
+    ports:
+      - "5001:5001"
+    env_file:
+      - ./server/.env
+    container_name: resource-service
+
+  frontend:
+    build: ./client
+    container_name: resource-client
+    ports:
+      - "3000:80"
+    depends_on:
+      - resource-service
+
