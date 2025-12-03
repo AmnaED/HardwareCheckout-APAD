@@ -8,7 +8,7 @@ function ResourceManagementPage() {
   const { user_id, project_id } = useParams();
 
   return (
-    <div>
+    <div className="hardware-container">
       <h1>Resource Management Page</h1>
       <h2>Hardware Requests</h2>
       <ResourceRequestForm projectID={123} />

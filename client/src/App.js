@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ResourceManagementPage from './ResourceManagementPage';
+import './Resource.css';
 
 function App() {
   return (

@@ -25,10 +25,6 @@ function ResourceRequestForm({ projectID }) {
      const res1Avail = await fetch(`${API_BASE_URL}/hardware/1/availability`);
      const res2Cap = await fetch(`${API_BASE_URL}/hardware/2/capacity`);
      const res2Avail = await fetch(`${API_BASE_URL}/hardware/2/availability`);
-     // const res1Cap = await fetch("http://127.0.0.1:5000/hardware/1/capacity");
-     // const res1Avail = await fetch("http://127.0.0.1:5000/hardware/1/availability");
-     // const res2Cap = await fetch("http://127.0.0.1:5000/hardware/2/capacity");
-     // const res2Avail = await fetch("http://127.0.0.1:5000/hardware/2/availability");
 
       const cap1 = await res1Cap.json();
       const avail1 = await res1Avail.json();
@@ -59,6 +55,7 @@ function ResourceRequestForm({ projectID }) {
       [name]: value,
     }));
   }
+  
   async function handleSubmit(event, type) {
     event.preventDefault();
     const route = type === 'checkin' ? 'checkin' : 'checkout';
@@ -135,42 +132,67 @@ function ResourceRequestForm({ projectID }) {
     }
       
   }
+  
   return (
-    <form>
-      <div>
-        <table id="table1">
-          <thead>
-            <tr>
-              <th className="custom-padding"></th>
-              <th className="custom-padding">Total Capacity</th>
-              <th className="custom-padding">Currently Available</th>
-              <th className="custom-padding">Request Amount</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Hardware #1</td>
-              <td className="text-outline-box">{hardwareData.capacity1}</td>
-              <td className="text-outline-box">{hardwareData.available1}</td>
-              <td className="text-outline-box">
-                <input type="text" name="requestAmount1" value={formData.requestAmount1} onChange={handleInputChange} />
-              </td>
-            </tr>
-            <tr>
-              <td>Hardware #2</td>
-              <td className="text-outline-box">{hardwareData.capacity2}</td>
-              <td className="text-outline-box">{hardwareData.available2}</td>
-              <td className="text-outline-box">
-                <input type="text" name="requestAmount2" value={formData.requestAmount2} onChange={handleInputChange} />
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <button type="button" onClick={(e) => handleSubmit(e, 'checkin')}>Check-In</button>
-        <button type="button" onClick={(e) => handleSubmit(e, 'checkout')}>Check-Out</button>
+    <div>
+      {/* Column Headers */}
+      <div className="table-header">
+        <div className="header-item">Label</div>
+        <div className="header-item">Total Capacity</div>
+        <div className="header-item">Currently Available</div>
+        <div className="header-item">Request Amount</div>
       </div>
-    </form>
+      
+      {/* Hardware #1 Row */}
+      <div className="hardware-row">
+        <div className="hardware-label">Hardware #1</div>
+        <div className="value-box">{hardwareData.capacity1}</div>
+        <div className="value-box">{hardwareData.available1}</div>
+        <div className="input-box">
+          <input 
+            type="text" 
+            className="request-input"
+            name="requestAmount1" 
+            value={formData.requestAmount1} 
+            onChange={handleInputChange} 
+          />
+        </div>
+      </div>
+      
+      {/* Hardware #2 Row */}
+      <div className="hardware-row">
+        <div className="hardware-label">Hardware #2</div>
+        <div className="value-box">{hardwareData.capacity2}</div>
+        <div className="value-box">{hardwareData.available2}</div>
+        <div className="input-box">
+          <input 
+            type="text" 
+            className="request-input"
+            name="requestAmount2" 
+            value={formData.requestAmount2} 
+            onChange={handleInputChange} 
+          />
+        </div>
+      </div>
+
+      {/* Action Buttons */}
+      <div className="button-container">
+        <button 
+          type="button" 
+          className="btn-check-in"
+          onClick={(e) => handleSubmit(e, 'checkin')}
+        >
+          Check-In
+        </button>
+        <button 
+          type="button" 
+          className="btn-check-out"
+          onClick={(e) => handleSubmit(e, 'checkout')}
+        >
+          Check-Out
+        </button>
+      </div>
+    </div>
   );
 }
 
