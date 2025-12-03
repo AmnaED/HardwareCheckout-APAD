@@ -1,0 +1,44 @@
+table, th, td {
+  border: transparent;
+  border-collapse: collapse;
+  font-weight: normal;
+}
+#table1 {
+  border-spacing: 15px;
+  border-collapse: separate;
+}
+
+
+th {
+  text-align: right;
+  padding: 20px;
+}
+
+td {
+  padding-left: 5px;
+}
+
+/*
+th{
+  padding-bottom: 50px;
+  padding-top: 30px;
+  padding-right: 200px;
+  padding-left: 100px;
+  text-align: left;
+}
+td {
+  padding-bottom: 50px;
+  padding-top: 30px;
+  padding-right: 200px;
+  padding-left: 5px;
+  text-align: left;
+}
+*/
+.text-outline-box {
+  border: 2px solid black; /* Sets a 2px solid black border */
+  padding: 30px; /* Adds space between the text and the border */
+}
+
+.custom-padding {
+  padding-left:0px;
+}
