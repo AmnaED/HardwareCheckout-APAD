@@ -7,11 +7,11 @@ services:
       - "5002:5002"
     env_file:
       - ./server/.env
-    container_name: resource-service
+    container_name: hw-resource-service
 
   frontend:
     build: ./client
-    container_name: resource-client
+    container_name: hw-resource-client
     ports:
       - "3002:80"
     depends_on:
